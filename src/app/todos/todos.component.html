@@ -1,5 +1,6 @@
 <input #todoInput>
 <button (click)="add(todoInput.value)">Hinzufügen</button>
+<button (click)="sync()">Sync</button>
 
 <ul>
     <li *ngFor="let todo of todos">{{ todo.title }}</li>
