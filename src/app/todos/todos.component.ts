@@ -26,6 +26,11 @@ export class TodosComponent implements OnInit {
     await this.loadTodos();
   }
 
+  async toggleDone(todo: Todo) {
+    await this.todoService.toggleDone(todo);
+    await this.loadTodos();
+  }
+
   async loadTodos() {
     this.todos = await this.todoService.getAll();
   }

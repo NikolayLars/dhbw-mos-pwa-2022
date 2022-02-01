@@ -26,6 +26,11 @@ export class TodoService extends Dexie {
     return this.todos.add({ title, id: v4(), done: false });
   }
 
+  toggleDone(todo: Todo) {
+    todo.done = !todo.done;
+    return this.todos.put(todo);
+  }
+
   async sync() {
     const allTodos = await this.getAll();
     const syncedTodos = await this.httpClient.post<Todo[]>('http://localhost:3030/sync', allTodos).toPromise();
